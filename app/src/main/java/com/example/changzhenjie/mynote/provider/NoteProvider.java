@@ -20,9 +20,10 @@ import com.example.changzhenjie.mynote.entity.BillNoteType;
 import com.example.changzhenjie.mynote.entity.BillNoteType.NoteTypeColumns;
 import com.example.changzhenjie.mynote.entity.MoneyStoreType;
 import com.example.changzhenjie.mynote.entity.NoteContent;
+import com.example.changzhenjie.mynote.util.LogUtils;
 
 public class NoteProvider extends ContentProvider {
-    public static final String LogTag = "NoteHelper";
+    public static final String Tag = LogUtils.makeLogTag(NoteProvider.class);
 
     public static final Object mDatabaseLock = new Object();
     public static final String DATABASE_NAME = "NoteProvider.db";
@@ -87,7 +88,7 @@ public class NoteProvider extends ContentProvider {
         if (match < 0) {
 
         } else {
-            Log.d(LogTag, methodName + " Uri:" + uri + " match is " + match);
+            LogUtils.LOGD(Tag, methodName + " Uri:" + uri + " match is " + match);
         }
         return match;
     }
@@ -146,7 +147,7 @@ public class NoteProvider extends ContentProvider {
     private static String getQueryMoneyStoreSqlByID(String[] uiProjection, String id) {
         StringBuilder sb = genSelect(uiProjection);
         sb.append(" FROM " + MoneyStoreType.TABLE_NAME + " WHERE _id = " + id);
-        Log.d(LogTag, "sql : " + sb.toString());
+        LogUtils.LOGD(Tag, "sql : " + sb.toString());
         return sb.toString();
     }
 
@@ -172,7 +173,7 @@ public class NoteProvider extends ContentProvider {
     private static String getQueryBillNoteSqlById(String[] uiProjection, String id) {
         StringBuilder sb = genSelect(uiProjection);
         sb.append(" FROM " + BillNote.TABLE_NAME + " WHERE _id = " + id);
-        Log.d(LogTag, "sql : " + sb.toString());
+        LogUtils.LOGD(Tag, "sql : " + sb.toString());
         return sb.toString();
     }
 
@@ -198,7 +199,7 @@ public class NoteProvider extends ContentProvider {
     private static String getQueryNoteTypeSqlById(String[] uiProjection, String id) {
         StringBuilder sb = genSelect(uiProjection);
         sb.append(" FROM " + BillNoteType.TABLE_NAME + " WHERE _id = " + id);
-        Log.d(LogTag, "sql : " + sb.toString());
+        LogUtils.LOGD(Tag, "sql : " + sb.toString());
         return sb.toString();
     }
 
@@ -206,7 +207,7 @@ public class NoteProvider extends ContentProvider {
         StringBuilder sb = genSelect(uiProjection);
         sb.append(" FROM " + BillNoteType.TABLE_NAME + " WHERE " + NoteTypeColumns.NOTETYPE_INOROUR
                 + " = " + type);
-        Log.d(LogTag, "sql : " + sb.toString());
+        LogUtils.LOGD(Tag, "sql : " + sb.toString());
         return sb.toString();
     }
 
@@ -247,7 +248,7 @@ public class NoteProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        Log.d(LogTag, "insert:" + uri);
+        LogUtils.LOGD(Tag, "insert:" + uri);
         int match = findMatch(uri, "insert");
         Context context = getContext();
         ContentResolver resolver = context.getContentResolver();
@@ -256,22 +257,22 @@ public class NoteProvider extends ContentProvider {
         long id;
         switch (match) {
             case ACCOUNT:
-                Log.d(LogTag, "insert account");
+                LogUtils.LOGD(Tag, "insert account");
                 id = database.insert(Account.TABLE_NAME, null, values);
                 resultUri = ContentUris.withAppendedId(uri, id);
                 break;
             case MONEYSTORE:
-                Log.d(LogTag, "insert moneystore");
+                LogUtils.LOGD(Tag, "insert moneystore");
                 id = database.insert(MoneyStoreType.TABLE_NAME, null, values);
                 resultUri = ContentUris.withAppendedId(uri, id);
                 break;
             case BILLNOTE:
-                Log.d(LogTag, "insert billnotes");
+                LogUtils.LOGD(Tag, "insert billnotes");
                 id = database.insert(BillNote.TABLE_NAME, null, values);
                 resultUri = ContentUris.withAppendedId(uri, id);
                 break;
             case NOTETYPE:
-                Log.d(LogTag, "insert noteType");
+                LogUtils.LOGD(Tag, "insert noteType");
                 id = database.insert(BillNoteType.TABLE_NAME, null, values);
                 resultUri = ContentUris.withAppendedId(uri, id);
                 break;

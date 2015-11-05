@@ -13,12 +13,13 @@ import com.example.changzhenjie.mynote.entity.BillNoteType;
 import com.example.changzhenjie.mynote.entity.BillNoteType.NoteTypeColumns;
 import com.example.changzhenjie.mynote.entity.MoneyStoreType;
 import com.example.changzhenjie.mynote.entity.MoneyStoreType.MoneyStoreTypeColumns;
+import com.example.changzhenjie.mynote.util.LogUtils;
 
 /**
  * Created by zhenjie on 2015/5/9.
  */
 public class NoteDBHelper extends SQLiteOpenHelper {
-    public static final String LogTag = "NoteHelper";
+    public static final String LogTag = LogUtils.makeLogTag(NoteDBHelper.class);
     public static final int DATABASE_VERSION = 1;
     Context mContext;
 
@@ -29,7 +30,7 @@ public class NoteDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d(LogTag, "NoteDBHelper onCreate Table");
+        LogUtils.LOGD(LogTag, "NoteDBHelper onCreate Table");
         // 创建账户表
         createAccountTable(db);
         // 创建资金存储类型表
@@ -47,7 +48,7 @@ public class NoteDBHelper extends SQLiteOpenHelper {
     }
 
     static void createAccountTable(SQLiteDatabase sqLiteDatabase) {
-        Log.d(LogTag, "createAccountTable start");
+        LogUtils.LOGD(LogTag, "createAccountTable start");
         String accountColumns = " (" + Account.AccountColumns._ID
                 + " integer primary key autoincrement, "
                 + Account.AccountColumns.ACCOUNT_AVATAR + " text, "
@@ -58,11 +59,11 @@ public class NoteDBHelper extends SQLiteOpenHelper {
                 + Account.AccountColumns.ACCOUNT_PWD + " text " + " )";
         sqLiteDatabase.execSQL("create table " + Account.TABLE_NAME
                 + accountColumns);
-        Log.d(LogTag, "createAccountTable finished : " + accountColumns);
+        LogUtils.LOGD(LogTag, "createAccountTable finished : " + accountColumns);
     }
 
     static void createMoneyStoreTable(SQLiteDatabase sqLiteDatabase) {
-        Log.d(LogTag, "createMoneyStoreTable start");
+        LogUtils.LOGD(LogTag, "createMoneyStoreTable start");
         String moneyStoreColumnsString = " ("
                 + MoneyStoreType.MoneyStoreTypeColumns._ID
                 + " integer primary key autoincrement, "
@@ -74,11 +75,11 @@ public class NoteDBHelper extends SQLiteOpenHelper {
                 + MoneyStoreTypeColumns.MONEY_STORE_DESC + " text " + " )";
         sqLiteDatabase.execSQL("create table " + MoneyStoreType.TABLE_NAME
                 + moneyStoreColumnsString);
-        Log.d(LogTag, "createMoneyStoreTable finished : " + moneyStoreColumnsString);
+        LogUtils.LOGD(LogTag, "createMoneyStoreTable finished : " + moneyStoreColumnsString);
     }
 
     static void createBillNoteTable(SQLiteDatabase sqLiteDatabase) {
-        Log.d(LogTag, "createBillNoteTable start");
+        LogUtils.LOGD(LogTag, "createBillNoteTable start");
         String billNoteColumnsString = " ("
                 + BillNoteColumns._ID
                 + " integer primary key autoincrement, "
@@ -91,11 +92,11 @@ public class NoteDBHelper extends SQLiteOpenHelper {
                 + BillNoteColumns.BILL_NOTE_DESC + " text " + " )";
         sqLiteDatabase.execSQL("create table " + BillNote.TABLE_NAME
                 + billNoteColumnsString);
-        Log.d(LogTag, "createBillNoteTable finished : " + billNoteColumnsString);
+        LogUtils.LOGD(LogTag, "createBillNoteTable finished : " + billNoteColumnsString);
     }
     
     static void createBillNoteTypeTable(SQLiteDatabase sqLiteDatabase) {
-        Log.d(LogTag, "createBillNoteTypeTable start");
+        LogUtils.LOGD(LogTag, "createBillNoteTypeTable start");
         String noteTypeColumnsString = " ("
                 + NoteTypeColumns._ID
                 + " integer primary key autoincrement, "
@@ -104,6 +105,6 @@ public class NoteDBHelper extends SQLiteOpenHelper {
                 + NoteTypeColumns.NOTETYPE_INOROUR + " integer " + " )";
         sqLiteDatabase.execSQL("create table " + BillNoteType.TABLE_NAME
                 + noteTypeColumnsString);
-        Log.d(LogTag, "createBillNoteTypeTable finished : " + noteTypeColumnsString);
+        LogUtils.LOGD(LogTag, "createBillNoteTypeTable finished : " + noteTypeColumnsString);
     }
 }

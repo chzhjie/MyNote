@@ -76,7 +76,7 @@ public abstract class NoteContent {
         Uri u = ContentUris.withAppendedId(contentUri, id);
         Cursor c = context.getContentResolver().query(u, contentProjections, null, null, null);
         if (c == null) {
-            LogUtils.info(Tag, "can not restore the Content with id: %1d and Uri : %2s", id, u);
+            LogUtils.LOGD(Tag, "can not restore the Content with id: "+ id +" and Uri :"+u.toString());
             return null;
         }
         try {

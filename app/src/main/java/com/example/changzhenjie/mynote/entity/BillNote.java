@@ -103,7 +103,7 @@ public class BillNote extends NoteContent {
         values.put(BillNoteColumns.BILL_NOTE_PHOTO, billPhoto);
         values.put(BillNoteColumns.BILL_NOTE_STOREID, billMoneyStoreTypeID);
         values.put(BillNoteColumns.BILL_NOTE_MONEY_TYPE, billMoneyType);
-        values.put(BillNoteColumns.BILL_NOTE_TIME, NoteUtils.parseStringFromDate(billTime));
+        values.put(BillNoteColumns.BILL_NOTE_TIME, DateUtil.parseStringFromDate(billTime));
         values.put(BillNoteColumns.BILL_NOTE_DESC, billDesc);
         return values;
     }
@@ -116,7 +116,7 @@ public class BillNote extends NoteContent {
         billPhoto = cursor.getString(CONTENT_BILLNOTE_PHOTO_COLUMN);
         billMoneyStoreTypeID = cursor.getString(CONTENT_BILLNOTE_MONEYSTOREID_COLUMN);
         billMoneyType = cursor.getString(CONTENT_BILLNOTE_MONEYTYPE_COLUMN);
-        billTime = NoteUtils.parseDataFromString(cursor.getString(CONTENT_BILLNOTE_TIME_COLUMN));
+        billTime = DateUtil.parseDataFromString(cursor.getString(CONTENT_BILLNOTE_TIME_COLUMN));
         billDesc = cursor.getString(CONTENT_BILLNOTE_DESC_COLUMN);
     }
 
@@ -130,7 +130,7 @@ public class BillNote extends NoteContent {
             sb.append("billType : ").append(billType);
         }
         if (billTime != null) {
-            sb.append("billTIme : ").append(NoteUtils.parseStringFromDate(billTime));
+            sb.append("billTIme : ").append(DateUtil.parseStringFromDate(billTime));
         }
         if (!TextUtils.isEmpty(billDesc)) {
             sb.append("billDesc : ").append(billDesc);
