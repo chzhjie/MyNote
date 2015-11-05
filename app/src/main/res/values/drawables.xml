@@ -1,0 +1,16 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
+    <item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</item>
+    <item name="ic_menu_slideshow" type="drawable">@android:drawable/ic_menu_slideshow</item>
+    <item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>
+    <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
+    <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
+    <item name="ic_menu_add" type="drawable">@mipmap/ic_add_white_48dp</item>
+    <item name="ic_menu_create" type="drawable">@mipmap/ic_create_white_48dp</item>
+    <item name="ic_drawer_home" type="drawable">@mipmap/ic_home_black_48dp</item>
+    <item name="ic_drawer_wallet" type="drawable">@mipmap/ic_account_balance_wallet_black_48dp</item>
+    <item name="ic_drawer_payment" type="drawable">@mipmap/ic_payment_black_48dp</item>
+    <item name="ic_drawer_setting" type="drawable">@mipmap/ic_settings_black_48dp</item>
+    <item name="ic_drawer_about" type="drawable">@mipmap/ic_info_outline_black_48dp</item>
+    <item name="ic_drawer_backup" type="drawable">@mipmap/ic_save_black_48dp</item>
+</resources>

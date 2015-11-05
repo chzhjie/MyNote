@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by changzhenjie on 11/5/15.
  */
 public class DateUtil {
-    private static final String TAG = LogUtils.makeLogTag(NoteUtils.class);
+    private static final String TAG = LogUtils.makeLogTag(UiUtils.class);
 
     /**
      * 将String转换为Date

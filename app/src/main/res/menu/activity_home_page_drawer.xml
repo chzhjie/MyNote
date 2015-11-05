@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_drawer_home"
+            android:title="@string/drawer_home" />
+        <item
+            android:id="@+id/nav_payments"
+            android:icon="@drawable/ic_drawer_payment"
+            android:title="@string/drawer_payment" />
+        <item
+            android:id="@+id/nav_wallet"
+            android:icon="@drawable/ic_drawer_wallet"
+            android:title="@string/drawer_wallet" />
+        <item
+            android:id="@+id/nav_backup"
+            android:icon="@drawable/ic_drawer_backup"
+            android:title="@string/drawer_backup" />
+    </group>
+    <item android:title="@string/drawer_other">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_drawer_setting"
+                android:title="@string/drawer_settings" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_drawer_about"
+                android:title="@string/drawer_about" />
+        </menu>
+    </item>
+
+
+</menu>
