@@ -1,5 +1,6 @@
 package com.example.changzhenjie.mynote.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.example.changzhenjie.mynote.R;
+import com.example.changzhenjie.mynote.categories.Categories;
 
 public class HomePageActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -91,6 +93,9 @@ public class HomePageActivity extends BaseActivity
 
         } else if (id == R.id.nav_about) {
 
+        } else if (id == R.id.nav_categories){
+            Intent intent = new Intent(HomePageActivity.this, Categories.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
