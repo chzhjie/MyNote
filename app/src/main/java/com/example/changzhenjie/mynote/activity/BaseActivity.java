@@ -1,5 +1,6 @@
 package com.example.changzhenjie.mynote.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.changzhenjie.mynote.R;
+import com.example.changzhenjie.mynote.categories.Categories;
 
 /**
  * Created by changzhenjie on 11/5/15.
@@ -60,6 +62,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_about) {
 
+        } else if (id == R.id.nav_categories){
+            Intent intent = new Intent(BaseActivity.this, Categories.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
