@@ -16,7 +16,7 @@
             android:title="@string/drawer_wallet" />
         <item
             android:id="@+id/nav_categories"
-            android:icon="@drawable/ic_drawer_wallet"
+            android:icon="@drawable/ic_drawer_categories"
             android:title="@string/drawer_categories" />
     </group>
     <item android:title="@string/drawer_other">
