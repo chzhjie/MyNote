@@ -29,7 +29,8 @@
     <string name="pref_export_title">导出账单</string>
     <string name="pref_export_summery">将账单信息导出到文本文件中</string>
 
-
+    <!-- Category -->
+    <string name="add_category_action">添加</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
