@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="pref_add_location"
+        android:summary="@string/pref_add_location_summery"
+        android:title="@string/pref_add_location" />
+    <PreferenceCategory
+        android:key="backup_category"
+        android:title="@string/pref_backup_category_title">
+        <Preference
+            android:key="pref_backup"
+            android:summary="@string/pref_backup_summery"
+            android:title="@string/pref_backup_title"></Preference>
+        <Preference
+            android:key="pref_export"
+            android:summary="@string/pref_export_summery"
+            android:title="@string/pref_export_title"></Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

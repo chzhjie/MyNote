@@ -9,4 +9,7 @@
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+
+    <color name="letter_title_default_color">#FFFFFF</color>
+    <color name="contacts_bg_default_color">#009688</color>
 </resources>

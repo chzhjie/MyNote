@@ -19,6 +19,7 @@ import com.example.changzhenjie.mynote.moneymanager.MoneyManager;
 import com.example.changzhenjie.mynote.paymentbalance.PaymentsActivity;
 import com.example.changzhenjie.mynote.R;
 import com.example.changzhenjie.mynote.categories.CategoriesActivity;
+import com.example.changzhenjie.mynote.settings.SettingsActivity;
 import com.example.changzhenjie.mynote.util.LogUtils;
 
 /**
@@ -120,8 +121,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
             Intent intent = new Intent(BaseActivity.this, MoneyManager.class);
             createBackStack(intent);
         } else if (id == R.id.nav_settings) {
-//            Intent intent = new Intent(BaseActivity.this, SettingsActivity.class);
-//            createBackStack(intent);
+            Intent intent = new Intent(BaseActivity.this, SettingsActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_categories) {

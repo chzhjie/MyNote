@@ -44,6 +44,10 @@
             android:label="@string/title_activity_payments"
             android:parentActivityName=".homepage.HomePageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

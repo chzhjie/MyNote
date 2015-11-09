@@ -1,79 +1,35 @@
 <resources>
     <string name="app_name">钱包</string>
     <string name="action_settings">设置</string>
-    <string name="title_activity_home_page">主页</string>
 
+    <!-- Drawer and Activity -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="drawer_home">主页</string>
-    <string name="drawer_payment">收支</string>
+    <string name="drawer_home">账单总览</string>
+    <string name="drawer_payment">收支详情</string>
     <string name="drawer_wallet">资金管理</string>
     <string name="drawer_settings">设置</string>
     <string name="drawer_about">关于</string>
     <string name="drawer_backup">备份</string>
     <string name="drawer_other">其他</string>
     <string name="drawer_categories">类别</string>
-    <string name="title_activity_categories">Categories</string>
-    <string name="title_activity_money_manager">MoneyManager</string>
-    <string name="title_activity_payments">PaymentsActivity</string>
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_home_page">账单总览</string>
+    <string name="title_activity_categories">类别</string>
+    <string name="title_activity_money_manager">资金管理</string>
+    <string name="title_activity_payments">收支详情</string>
+    <string name="title_activity_settings">设置</string>
 
-    <!-- Strings related to Settings -->
+    <!-- Settings -->
+    <string name="pref_add_location">是否开启定位功能</string>
+    <string name="pref_add_location_summery">开启定位，在记录账单的时候将会自动添加位置信息</string>
+    <string name="pref_backup_category_title">备份与导出</string>
+    <string name="pref_backup_title">备份信息</string>
+    <string name="pref_backup_summery">将账户和账单信息备份到内存卡中</string>
+    <string name="pref_export_title">导出账单</string>
+    <string name="pref_export_summery">将账单信息导出到文本文件中</string>
 
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-
-    <string name="pref_title_vibrate">Vibrate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
