@@ -42,7 +42,9 @@ public class NoteProvider extends ContentProvider {
     private static final int NOTETYPE_BASE = 0X3000;
     private static final int NOTETYPE = NOTETYPE_BASE;
     private static final int NOTETYPE_ID = NOTETYPE_BASE + 1;
-    private static final int NOTETYPE_GETBYTYPE = NOTETYPE_BASE + 2;
+    private static final int NOTETYPE_GETMAINTYPE = NOTETYPE_BASE + 2;
+    private static final int NOTETYPE_GETSUBTYPE = NOTETYPE_BASE + 3;
+    private static final int NOTETYPE_GETMAXSUBTYPE = NOTETYPE_BASE + 4;
 
     private static SparseArray<String> TABLE_NAMES;
     private static int BASE_SHIFT = 12;
@@ -65,7 +67,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 初始化UriMatcher
-     * 
+     *
      * @param context
      */
     private static void init(Context context) {
@@ -80,7 +82,9 @@ public class NoteProvider extends ContentProvider {
         uriMatcher.addURI(NoteContent.AUTHORITY, "billnotetype/#",
                 NOTETYPE_ID);
         uriMatcher.addURI(NoteContent.AUTHORITY, "getbytype",
-                NOTETYPE_GETBYTYPE);
+                NOTETYPE_GETMAINTYPE);
+        uriMatcher.addURI(NoteContent.AUTHORITY, "getsubtype",NOTETYPE_GETSUBTYPE);
+        uriMatcher.addURI(NoteContent.AUTHORITY, "getsubtype/#",NOTETYPE_GETMAXSUBTYPE);
     }
 
     private static int findMatch(Uri uri, String methodName) {
@@ -95,7 +99,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 根据给定的要查询的列，返回SELECT* 语句
-     * 
+     *
      * @param uiProjection
      * @return
      */
@@ -115,7 +119,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 获取所有的账户的sql语句
-     * 
+     *
      * @param uiProjection
      * @return
      */
@@ -127,7 +131,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 获取所有的MoneyStore的sql语句
-     * 
+     *
      * @param uiProjection
      * @return
      */
@@ -139,7 +143,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 根据ID从获取MoneyStore的sql语句
-     * 
+     *
      * @param uiProjection
      * @param id
      * @return
@@ -153,7 +157,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 获得BillNotes的sql语句
-     * 
+     *
      * @param uiProjection
      * @return
      */
@@ -165,7 +169,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 根据ID获取BillNote的sql语句
-     * 
+     *
      * @param uiProjection
      * @param id
      * @return
@@ -179,7 +183,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 获取所有BillNoteType的sql语句
-     * 
+     *
      * @param uiProjection
      * @return
      */
@@ -191,7 +195,7 @@ public class NoteProvider extends ContentProvider {
 
     /**
      * 根据ID获取NoteType的Sql语句
-     * 
+     *
      * @param uiProjection
      * @param id
      * @return
@@ -203,12 +207,10 @@ public class NoteProvider extends ContentProvider {
         return sb.toString();
     }
 
-    private static String getQueryNoteTypeSqlByType(String[] uiProjection, String type) {
-        StringBuilder sb = genSelect(uiProjection);
-        sb.append(" FROM " + BillNoteType.TABLE_NAME + " WHERE " + NoteTypeColumns.NOTETYPE_INOROUR
-                + " = " + type);
-        LogUtils.LOGD(Tag, "sql : " + sb.toString());
-        return sb.toString();
+    private String getMaxMainNoteTypeSql() {
+        String sql = "select * from " + BillNoteType.TABLE_NAME + " where " + NoteTypeColumns.NOTETYPE_CODE + " = ( select max(" + NoteTypeColumns.NOTETYPE_CODE + ") from " + BillNoteType.TABLE_NAME + " where " + NoteTypeColumns.NOTETYPE_ISMAIN + " = 1 )";
+        LogUtils.LOGD(Tag,"getNaxMainTypeSql = " + sql);
+        return sql;
     }
 
     private static String whereWithId(String id, String selection) {
@@ -293,7 +295,7 @@ public class NoteProvider extends ContentProvider {
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection,
-            String[] selectionArgs, String sortOrder) {
+                        String[] selectionArgs, String sortOrder) {
         Cursor c = null;
         int match = 0;
         Context context = getContext();
@@ -320,6 +322,13 @@ public class NoteProvider extends ContentProvider {
                 id = uri.getPathSegments().get(1);
                 c = database.query(tableName, projection, whereWithId(id, selection), selectionArgs, null, null, null, null);
                 break;
+            case NOTETYPE_GETMAINTYPE:
+                c = database.rawQuery(getMaxMainNoteTypeSql(),null);
+                break;
+            case NOTETYPE_GETSUBTYPE:
+                break;
+            case NOTETYPE_GETMAXSUBTYPE:
+                break;
         }
 
         return c;
@@ -327,7 +336,7 @@ public class NoteProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String selection,
-            String[] selectionArgs) {
+                      String[] selectionArgs) {
         int match = findMatch(uri, "update");
         Context context = getContext();
         ContentResolver resolver = context.getContentResolver();

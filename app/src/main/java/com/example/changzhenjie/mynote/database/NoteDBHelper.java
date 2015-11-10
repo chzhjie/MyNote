@@ -102,7 +102,10 @@ public class NoteDBHelper extends SQLiteOpenHelper {
                 + " integer primary key autoincrement, "
                 + NoteTypeColumns.NOTETYPE_NAME + " text, "
                 + NoteTypeColumns.NOTETYPE_COLOR + " text, "
-                + NoteTypeColumns.NOTETYPE_INOROUR + " integer " + " )";
+                + NoteTypeColumns.NOTETYPE_INOROUR + " integer, "
+                + NoteTypeColumns.NOTETYPE_CODE + " integer, "
+                + NoteTypeColumns.NOTETYPE_ISMAIN + " integer, "
+                + NoteTypeColumns.NOTETYPE_PARENTCODE + " integer " + " )";
         sqLiteDatabase.execSQL("create table " + BillNoteType.TABLE_NAME
                 + noteTypeColumnsString);
         LogUtils.LOGD(LogTag, "createBillNoteTypeTable finished : " + noteTypeColumnsString);

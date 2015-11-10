@@ -104,4 +104,5 @@ public class TestNoteProvider extends ProviderTestCase2<NoteProvider> {
         int size = cursor.getCount();
         assertEquals(size, 1);
     }
+
 }

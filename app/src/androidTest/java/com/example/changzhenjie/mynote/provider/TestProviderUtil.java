@@ -54,11 +54,15 @@ public class TestProviderUtil extends Assert{
         noteType.noteTypeName = "娱乐";
         noteType.noteTypeColor="AAAAAA";
         noteType.inOrOut = 0;
+        noteType.isMainType = true;
+        noteType.noteTypeCode = 100;
         noteType.save(context);
         BillNoteType noteType2 = new BillNoteType();
         noteType2.noteTypeName = "交通";
         noteType2.noteTypeColor="AB6C11";
         noteType2.inOrOut = 1;
+        noteType.isMainType = true;
+        noteType.noteTypeCode = 200;
         noteType2.save(context);
         return noteType2;
     }

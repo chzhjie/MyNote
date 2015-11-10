@@ -9,8 +9,10 @@ import android.view.View;
 
 import com.example.changzhenjie.mynote.R;
 import com.example.changzhenjie.mynote.activity.BaseActivity;
+import com.example.changzhenjie.mynote.util.LogUtils;
 
 public class HomePageActivity extends BaseActivity {
+    private static final String TAG = LogUtils.makeLogTag(HomePageActivity.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
