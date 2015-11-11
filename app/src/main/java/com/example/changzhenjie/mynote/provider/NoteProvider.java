@@ -42,16 +42,17 @@ public class NoteProvider extends ContentProvider {
     private static final int NOTETYPE_BASE = 0X3000;
     private static final int NOTETYPE = NOTETYPE_BASE;
     private static final int NOTETYPE_ID = NOTETYPE_BASE + 1;
+    //use to get the Max TypeCode by MainTYpe
     private static final int NOTETYPE_GETMAINTYPE = NOTETYPE_BASE + 2;
-    private static final int NOTETYPE_GETSUBTYPE = NOTETYPE_BASE + 3;
-    private static final int NOTETYPE_GETMAXSUBTYPE = NOTETYPE_BASE + 4;
+    //use to get Max typeCode sub type by type
+    private static final int NOTETYPE_GETMAXSUBTYPE = NOTETYPE_BASE + 3;
 
     private static SparseArray<String> TABLE_NAMES;
     private static int BASE_SHIFT = 12;
     private static UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {
-        SparseArray<String> arrays = new SparseArray<String>(2);
+        SparseArray<String> arrays = new SparseArray<String>(4);
         arrays.put(ACCOUNT_BASE >> BASE_SHIFT, Account.TABLE_NAME);
         arrays.put(MONEYSTORE_BASE >> BASE_SHIFT, MoneyStoreType.TABLE_NAME);
         arrays.put(BILLNOTE_BASE >> BASE_SHIFT, BillNote.TABLE_NAME);
@@ -83,8 +84,7 @@ public class NoteProvider extends ContentProvider {
                 NOTETYPE_ID);
         uriMatcher.addURI(NoteContent.AUTHORITY, "getbytype",
                 NOTETYPE_GETMAINTYPE);
-        uriMatcher.addURI(NoteContent.AUTHORITY, "getsubtype",NOTETYPE_GETSUBTYPE);
-        uriMatcher.addURI(NoteContent.AUTHORITY, "getsubtype/#",NOTETYPE_GETMAXSUBTYPE);
+        uriMatcher.addURI(NoteContent.AUTHORITY, "getsubtype",NOTETYPE_GETMAXSUBTYPE);
     }
 
     private static int findMatch(Uri uri, String methodName) {
@@ -212,6 +212,11 @@ public class NoteProvider extends ContentProvider {
         LogUtils.LOGD(Tag,"getNaxMainTypeSql = " + sql);
         return sql;
     }
+    private String getMaxSubNoteTypeSql(){
+        String sql = "select * from " + BillNoteType.TABLE_NAME + " where " + NoteTypeColumns.NOTETYPE_CODE + " = ( select max(" + NoteTypeColumns.NOTETYPE_CODE + ") from " + BillNoteType.TABLE_NAME + " where " + NoteTypeColumns.NOTETYPE_PARENTCODE + " = ? )";
+        LogUtils.LOGD(Tag,"getNaxSubTypeSql = " + sql);
+        return sql;
+    }
 
     private static String whereWithId(String id, String selection) {
         StringBuilder sb = new StringBuilder(256);
@@ -325,9 +330,8 @@ public class NoteProvider extends ContentProvider {
             case NOTETYPE_GETMAINTYPE:
                 c = database.rawQuery(getMaxMainNoteTypeSql(),null);
                 break;
-            case NOTETYPE_GETSUBTYPE:
-                break;
             case NOTETYPE_GETMAXSUBTYPE:
+                c = database.rawQuery(getMaxSubNoteTypeSql(),selectionArgs);
                 break;
         }
 

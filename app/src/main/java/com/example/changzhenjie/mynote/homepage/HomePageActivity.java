@@ -6,9 +6,12 @@ import android.support.design.widget.Snackbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.changzhenjie.mynote.R;
 import com.example.changzhenjie.mynote.activity.BaseActivity;
+import com.example.changzhenjie.mynote.categories.CategoryUtils;
+import com.example.changzhenjie.mynote.entity.BillNoteType;
 import com.example.changzhenjie.mynote.util.LogUtils;
 
 public class HomePageActivity extends BaseActivity {
