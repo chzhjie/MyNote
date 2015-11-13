@@ -47,6 +47,14 @@
         <activity
             android:name=".settings.SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".categories.AddCategoryActivity"
+            android:label="@string/title_activity_add_category"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".categories.ColorPicker"
+            android:label="@string/title_activity_color_picker"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

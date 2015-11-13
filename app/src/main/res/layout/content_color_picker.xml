@@ -9,11 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".homepage.HomePageActivity"
-    tools:showIn="@layout/app_bar_home_page">
+    tools:context="com.example.changzhenjie.mynote.categories.ColorPicker"
+    tools:showIn="@layout/activity_color_picker">
 
-    <ImageView
-        android:id="@+id/titlecontact"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
 </RelativeLayout>

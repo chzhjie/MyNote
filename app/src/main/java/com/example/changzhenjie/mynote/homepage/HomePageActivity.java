@@ -1,18 +1,19 @@
 package com.example.changzhenjie.mynote.homepage;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.example.changzhenjie.mynote.R;
 import com.example.changzhenjie.mynote.activity.BaseActivity;
-import com.example.changzhenjie.mynote.categories.CategoryUtils;
-import com.example.changzhenjie.mynote.entity.BillNoteType;
+import com.example.changzhenjie.mynote.ui.ContactsDrawable;
 import com.example.changzhenjie.mynote.util.LogUtils;
+import com.example.changzhenjie.mynote.util.UiUtils;
 
 public class HomePageActivity extends BaseActivity {
     private static final String TAG = LogUtils.makeLogTag(HomePageActivity.class);
@@ -31,6 +32,10 @@ public class HomePageActivity extends BaseActivity {
             }
         });
         overridePendingTransition(0, 0);
+        ImageView imageView = UiUtils.getView(this,R.id.titlecontact);
+        ContactsDrawable contactsDrawable = new ContactsDrawable(getResources());
+        contactsDrawable.bind("振杰", Color.GRAY);
+        imageView.setImageDrawable(contactsDrawable);
     }
 
 
