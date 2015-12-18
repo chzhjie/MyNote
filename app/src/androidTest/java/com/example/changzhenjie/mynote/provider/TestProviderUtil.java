@@ -6,6 +6,7 @@ import com.example.changzhenjie.mynote.entity.BillNote;
 import com.example.changzhenjie.mynote.entity.BillNoteType;
 import com.example.changzhenjie.mynote.entity.MoneyStoreType;
 import com.example.changzhenjie.mynote.entity.NoteContent;
+import android.graphics.Color;
 
 import junit.framework.Assert;
 
@@ -44,7 +45,7 @@ public class TestProviderUtil extends Assert{
     public static BillNoteType setupBillNoteType(){
         BillNoteType noteType = new BillNoteType();
         noteType.noteTypeName = "娱乐";
-        noteType.noteTypeColor="AAAAAA";
+        noteType.noteTypeColor=Color.BLUE;
         noteType.inOrOut = 0;
         return noteType;
     }
@@ -52,14 +53,14 @@ public class TestProviderUtil extends Assert{
     public static BillNoteType setupBillNoteType2(Context context){
         BillNoteType noteType = new BillNoteType();
         noteType.noteTypeName = "娱乐";
-        noteType.noteTypeColor="AAAAAA";
+        noteType.noteTypeColor=Color.BLUE;
         noteType.inOrOut = 0;
         noteType.isMainType = true;
         noteType.noteTypeCode = 100;
         noteType.save(context);
         BillNoteType noteType2 = new BillNoteType();
         noteType2.noteTypeName = "交通";
-        noteType2.noteTypeColor="AB6C11";
+        noteType2.noteTypeColor=Color.BLUE;
         noteType2.inOrOut = 1;
         noteType.isMainType = true;
         noteType.noteTypeCode = 200;

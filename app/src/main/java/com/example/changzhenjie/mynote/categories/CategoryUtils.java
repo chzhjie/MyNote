@@ -3,6 +3,7 @@ package com.example.changzhenjie.mynote.categories;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
+import android.support.design.widget.Snackbar;
 
 import com.example.changzhenjie.mynote.entity.BillNote;
 import com.example.changzhenjie.mynote.entity.BillNoteType;
@@ -23,23 +24,23 @@ public class CategoryUtils {
      * @return mainTypeCode
      */
     public static int generateMainTypeCode(Context context) {
-        LogUtils.LOGD(TAG,"-generateMainTypeCode-");
+        LogUtils.LOGD(TAG, "-generateMainTypeCode-");
         ContentResolver resolver = context.getContentResolver();
         int mainTypeCode = 0;
         synchronized (syncLock) {
-            Cursor c =  resolver.query(BillNoteType.CONTENT_URI_GETBYTYPE, null, null, null, null);
+            Cursor c = resolver.query(BillNoteType.CONTENT_URI_GETBYTYPE, null, null, null, null);
             BillNoteType noteType = null;
-            if(c.moveToFirst()){
-                noteType = NoteContent.getContent(c,BillNoteType.class);
+            if (c.moveToFirst()) {
+                noteType = NoteContent.getContent(c, BillNoteType.class);
             }
-            if(noteType != null){
-                LogUtils.LOGD(TAG,noteType.toString());
+            if (noteType != null) {
+                LogUtils.LOGD(TAG, noteType.toString());
                 mainTypeCode = noteType.noteTypeCode + 100;
             } else {
                 mainTypeCode = 100;
             }
         }
-        LogUtils.LOGD(TAG,"new MainTypeCode = " + mainTypeCode);
+        LogUtils.LOGD(TAG, "new MainTypeCode = " + mainTypeCode);
         return mainTypeCode;
     }
 
@@ -49,44 +50,45 @@ public class CategoryUtils {
      * @param parentCode
      * @return
      */
-    public static int generateSubTypeCode(int parentCode,Context context) {
-        LogUtils.LOGD(TAG,"-generateSubTypeCode-");
+    public static int generateSubTypeCode(int parentCode, Context context) {
+        LogUtils.LOGD(TAG, "-generateSubTypeCode-");
         ContentResolver resolver = context.getContentResolver();
         int subTypeCode = 0;
         synchronized (syncLock) {
-            Cursor c = resolver.query(BillNoteType.CONTENT_URI_GETSUBTYPE,null,null,new String[]{String.valueOf(parentCode)},null);
+            Cursor c = resolver.query(BillNoteType.CONTENT_URI_GETSUBTYPE, null, null, new String[]{String.valueOf(parentCode)}, null);
             BillNoteType noteType = null;
-            if(c.moveToFirst()){
-                noteType = NoteContent.getContent(c,BillNoteType.class);
+            if (c.moveToFirst()) {
+                noteType = NoteContent.getContent(c, BillNoteType.class);
             }
-            if(noteType != null){
-                LogUtils.LOGD(TAG,noteType.toString());
+            if (noteType != null) {
+                LogUtils.LOGD(TAG, noteType.toString());
                 subTypeCode = noteType.noteTypeCode + 1;
-            }else {
+            } else {
                 subTypeCode = parentCode + 1;
             }
         }
-        LogUtils.LOGD(TAG,"new SubType Code : " + subTypeCode);
+        LogUtils.LOGD(TAG, "new SubType Code : " + subTypeCode);
         return subTypeCode;
     }
 
     /**
-     *
      * @param noteType
      * @return
      */
-    public static boolean checkNoteTypeIsValid(BillNoteType noteType,Context context){
+    public static boolean checkNoteTypeIsValid(BillNoteType noteType, Context context) {
         boolean isValid = false;
         ContentResolver resolver = context.getContentResolver();
         String selection = BillNoteType.NoteTypeColumns.NOTETYPE_CODE + " = ? OR " + BillNoteType.NoteTypeColumns.NOTETYPE_NAME + " = ?";
-        String[] selectionArgs = new String[]{String.valueOf(noteType.noteTypeCode),noteType.noteTypeName};
-        Cursor c = resolver.query(BillNoteType.CONTENT_URI_BILLNOTETYPE,null,selection,selectionArgs,null);
-        if(c.getCount() != 0){
+        String[] selectionArgs = new String[]{String.valueOf(noteType.noteTypeCode), noteType.noteTypeName};
+        Cursor c = resolver.query(BillNoteType.CONTENT_URI_BILLNOTETYPE, null, selection, selectionArgs, null);
+        if (c.getCount() != 0) {
             isValid = false;
-        }else {
+        } else {
             isValid = true;
         }
         return isValid;
     }
+
+
 
 }

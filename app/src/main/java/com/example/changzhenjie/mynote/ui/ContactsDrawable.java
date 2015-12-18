@@ -128,5 +128,9 @@ public class ContactsDrawable extends Drawable {
         mColor = color;
         invalidateSelf();
     }
+    public void bind(int color) {
+        mColor = color;
+        invalidateSelf();
+    }
 
 }

@@ -55,7 +55,7 @@
         <activity
             android:name=".categories.ColorPicker"
             android:label="@string/title_activity_color_picker"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/DialogActivity"></activity>
     </application>
 
 </manifest>

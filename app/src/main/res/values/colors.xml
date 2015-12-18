@@ -10,6 +10,34 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
 
+    <color name="colorBackground">#F4F4F4</color>
+    <color name="colorCardviewBg">#FAFAFA</color>
+
     <color name="letter_title_default_color">#FFFFFF</color>
     <color name="contacts_bg_default_color">#009688</color>
+
+
+    <array name="categories_type_colors">
+        <item>#EEAEEE</item>
+        <item>#EE00EE</item>
+        <item>#9A32CD</item>
+        <item>#CDB38B</item>
+        <item>#CD6839</item>
+        <item>#CD5B45</item>
+        <item>#B03060</item>
+        <item>#CD2626</item>
+        <item>#8B3A62</item>
+        <item>#6A5ACD</item>
+        <item>#473C8B</item>
+        <item>#5F9EA0</item>
+        <item>#388E8E</item>
+        <item>#548B54</item>
+        <item>#458B00</item>
+        <item>#228B22</item>
+        <item>#006400</item>
+        <item>#00796B</item>
+        <item>#1C86EE</item>
+        <item>#1874CD</item>
+        <item>#104E8B</item>
+    </array>
 </resources>

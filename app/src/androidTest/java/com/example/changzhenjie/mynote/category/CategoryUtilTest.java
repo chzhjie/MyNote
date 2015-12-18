@@ -1,6 +1,7 @@
 package com.example.changzhenjie.mynote.category;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 
@@ -18,14 +19,14 @@ public class CategoryUtilTest extends AndroidTestCase {
         context = getContext();
         BillNoteType noteType = new BillNoteType();
         noteType.noteTypeName = "娱乐";
-        noteType.noteTypeColor="AAAAAA";
+        noteType.noteTypeColor= Color.BLUE;
         noteType.inOrOut = 0;
         noteType.isMainType = true;
         noteType.noteTypeCode = 100;
         noteType.save(context);
         BillNoteType noteType2 = new BillNoteType();
         noteType2.noteTypeName = "交通";
-        noteType2.noteTypeColor="AB6C11";
+        noteType2.noteTypeColor=Color.BLUE;
         noteType2.inOrOut = 1;
         noteType2.isMainType = false;
         noteType2.noteTypeCode = 101;
@@ -33,7 +34,7 @@ public class CategoryUtilTest extends AndroidTestCase {
         noteType2.save(context);
         BillNoteType noteType3 = new BillNoteType();
         noteType3.noteTypeName = "交通";
-        noteType3.noteTypeColor="AB6C11";
+        noteType3.noteTypeColor=Color.BLUE;
         noteType3.inOrOut = 1;
         noteType3.isMainType = false;
         noteType3.noteTypeCode = 102;
@@ -41,7 +42,7 @@ public class CategoryUtilTest extends AndroidTestCase {
         noteType3.save(context);
         BillNoteType noteType4 = new BillNoteType();
         noteType4.noteTypeName = "娱乐";
-        noteType4.noteTypeColor="AAAAAA";
+        noteType4.noteTypeColor=Color.BLUE;
         noteType4.inOrOut = 0;
         noteType4.isMainType = true;
         noteType4.noteTypeCode = 200;

@@ -21,7 +21,7 @@ public class BillNoteType extends NoteContent {
     public static Uri CONTENT_URI_GETSUBTYPE;
 
     public String noteTypeName;
-    public String noteTypeColor;
+    public int noteTypeColor;
     public int inOrOut;
     public int noteTypeCode;
     public boolean isMainType;
@@ -43,11 +43,11 @@ public class BillNoteType extends NoteContent {
         this.noteTypeName = noteTypeName;
     }
 
-    public String getNoteTypeColor() {
+    public int getNoteTypeColor() {
         return noteTypeColor;
     }
 
-    public void setNoteTypeColor(String noteTypeColor) {
+    public void setNoteTypeColor(int noteTypeColor) {
         this.noteTypeColor = noteTypeColor;
     }
 
@@ -94,9 +94,9 @@ public class BillNoteType extends NoteContent {
         values.put(NoteTypeColumns.NOTETYPE_NAME, noteTypeName);
         values.put(NoteTypeColumns.NOTETYPE_COLOR, noteTypeColor);
         values.put(NoteTypeColumns.NOTETYPE_INOROUR, inOrOut);
-        values.put(NoteTypeColumns.NOTETYPE_CODE,noteTypeCode);
-        values.put(NoteTypeColumns.NOTETYPE_ISMAIN,isMainType?1:0);
-        values.put(NoteTypeColumns.NOTETYPE_PARENTCODE,parentTypeCode);
+        values.put(NoteTypeColumns.NOTETYPE_CODE, noteTypeCode);
+        values.put(NoteTypeColumns.NOTETYPE_ISMAIN, isMainType ? 1 : 0);
+        values.put(NoteTypeColumns.NOTETYPE_PARENTCODE, parentTypeCode);
         return values;
     }
 
@@ -104,7 +104,7 @@ public class BillNoteType extends NoteContent {
     public void restore(Cursor cursor) {
         mId = cursor.getLong(CONTENT_ID_COLUMN);
         noteTypeName = cursor.getString(CONTENT_NOTETYPE_NAME_COLUMN);
-        noteTypeColor = cursor.getString(CONTENT_NOTETYPE_COLOR_COLUMN);
+        noteTypeColor = cursor.getInt(CONTENT_NOTETYPE_COLOR_COLUMN);
         inOrOut = cursor.getInt(CONTENT_NOTETYPE_INOROUT_COLUMN);
         noteTypeCode = cursor.getInt(CONTENT_NOTETYPE_NOTECODE);
         isMainType = cursor.getInt(CONTENT_NOTETYPE_ISMAIN) == 1 ? true : false;
@@ -118,7 +118,7 @@ public class BillNoteType extends NoteContent {
         if (!TextUtils.isEmpty(noteTypeName)) {
             sb.append("noteTypeName : ").append(noteTypeName);
         }
-        if (!TextUtils.isEmpty(noteTypeColor)) {
+        if (noteTypeColor != 0) {
             sb.append("noteTypeColor : ").append(noteTypeColor);
         }
         sb.append("NoteCode : ").append(noteTypeCode);

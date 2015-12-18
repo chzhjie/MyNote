@@ -1,11 +1,15 @@
 package com.example.changzhenjie.mynote.categories;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 
 import com.example.changzhenjie.mynote.R;
 import com.example.changzhenjie.mynote.activity.BaseActivity;
@@ -23,11 +27,10 @@ public class CategoriesActivity extends BaseActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 
 
@@ -46,7 +49,9 @@ public class CategoriesActivity extends BaseActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_add_category) {
+            Intent intent = new Intent(this,AddCategoryActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -56,5 +61,10 @@ public class CategoriesActivity extends BaseActivity {
     @Override
     protected int getSelfNaviDrawerItem() {
         return R.id.nav_categories;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     }
 }

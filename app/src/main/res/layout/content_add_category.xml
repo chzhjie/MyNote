@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -13,11 +14,77 @@
     tools:context="com.example.changzhenjie.mynote.categories.AddCategoryActivity"
     tools:showIn="@layout/activity_add_category">
 
-
-    <LinearLayout
+    <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-    </LinearLayout>
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/category_color"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_help_grey600_36dp" />
+
+            <EditText
+                android:id="@+id/category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:hint="@string/add_category_name_label"
+                android:textSize="@dimen/large_font_size" />
+        </TableRow>
+
+        <TableRow>
+
+            <View
+                android:layout_width="50dp"
+                android:layout_height="50dp"></View>
+
+            <RadioGroup
+                android:id="@+id/category_inorout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/category_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_category_in_label"
+                    android:textSize="@dimen/small_font_size" />
+
+                <RadioButton
+                    android:id="@+id/category_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/add_category_out_label"
+                    android:textSize="@dimen/small_font_size" />
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+
+            <View
+                android:layout_width="50dp"
+                android:layout_height="50dp"></View>
+
+            <EditText
+                android:id="@+id/category_parent_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:editable="false"
+                android:hint="@string/add_category_parent_name_label"
+                android:textSize="@dimen/small_font_size" />
+        </TableRow>
+    </TableLayout>
 </LinearLayout>

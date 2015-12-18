@@ -101,7 +101,7 @@ public class NoteDBHelper extends SQLiteOpenHelper {
                 + NoteTypeColumns._ID
                 + " integer primary key autoincrement, "
                 + NoteTypeColumns.NOTETYPE_NAME + " text, "
-                + NoteTypeColumns.NOTETYPE_COLOR + " text, "
+                + NoteTypeColumns.NOTETYPE_COLOR + " integer, "
                 + NoteTypeColumns.NOTETYPE_INOROUR + " integer, "
                 + NoteTypeColumns.NOTETYPE_CODE + " integer, "
                 + NoteTypeColumns.NOTETYPE_ISMAIN + " integer, "

@@ -19,6 +19,7 @@
     <string name="title_activity_money_manager">资金管理</string>
     <string name="title_activity_payments">收支详情</string>
     <string name="title_activity_settings">设置</string>
+    <string name="action_save">保存</string>
 
     <!-- Settings -->
     <string name="pref_add_location">是否开启定位功能</string>
@@ -33,6 +34,12 @@
     <string name="add_category_action">添加</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_add_category">AddCategoryActivity</string>
-    <string name="title_activity_color_picker">ColorPicker</string>
+    <string name="title_activity_add_category">新建分类</string>
+    <string name="title_activity_color_picker">颜色选择</string>
+
+    <string name="add_category_name_label">分类名称</string>
+    <string name="add_category_in_label">收入</string>
+    <string name="add_category_out_label">支出</string>
+    <string name="add_category_parent_name_label">父级分类</string>
+
 </resources>
