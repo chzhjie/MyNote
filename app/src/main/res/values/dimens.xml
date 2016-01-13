@@ -79,4 +79,7 @@
     <dimen name="expanding_entry_card_item_icon_height">24dp</dimen>
     <dimen name="expanding_entry_card_item_icon_width">24dp</dimen>
     <!-- expand entry end-->
+
+    <dimen name="money_mananger_app_bar_height">200dp</dimen>
+
 </resources>

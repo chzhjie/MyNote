@@ -1,9 +1,14 @@
 package com.example.changzhenjie.mynote.homepage;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,6 +41,11 @@ public class HomePageActivity extends BaseActivity {
         ContactsDrawable contactsDrawable = new ContactsDrawable(getResources());
         contactsDrawable.bind("振杰", Color.GRAY);
         imageView.setImageDrawable(contactsDrawable);
+
+        SpannableStringBuilder stringBuilder = new SpannableStringBuilder("aaaaaa");
+        StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
+        RelativeSizeSpan sizeSpan = new RelativeSizeSpan(2f);
+        stringBuilder.setSpan(styleSpan,0,5, Spanned.SPAN_INCLUSIVE_INCLUSIVE);
     }
 
 
