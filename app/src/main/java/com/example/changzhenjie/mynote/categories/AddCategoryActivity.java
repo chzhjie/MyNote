@@ -3,6 +3,7 @@ package com.example.changzhenjie.mynote.categories;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -44,6 +45,7 @@ public class AddCategoryActivity extends AppCompatActivity implements View.OnCli
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
+        overridePendingTransition(R.anim.in_from_bottom,R.anim.out_from_bottom);
 
     }
 
@@ -108,6 +110,9 @@ public class AddCategoryActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void saveCategory() {
+        if(!checkCatefory()){
+            return;
+        }
         BillNoteType category = new BillNoteType();
         String parentname = parentCategoryName.getText().toString();
         if(TextUtils.isEmpty(parentname)){
@@ -124,5 +129,17 @@ public class AddCategoryActivity extends AppCompatActivity implements View.OnCli
         }
         category.save(this);
         finish();
+    }
+
+    private boolean checkCatefory(){
+        if(TextUtils.isEmpty(categoryName.getText().toString())){
+            Toast.makeText(this, "input the cateforyname", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(categoryColor == 0){
+            Toast.makeText(this, "input the cateforyColor", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
